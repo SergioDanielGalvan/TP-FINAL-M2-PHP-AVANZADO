@@ -56,26 +56,9 @@ class controladorFormularios {
 
             $respuesta = modeloFormularios::mdlIngreso( $nombretabla, $datosregistro );
 
-            if ( $respuesta == "ok" ) {
-                $datos = modeloFormularios::mdlSeleccionarRegistros( $nombretabla, "usuario", $_POST[ "usuario" ] );
-                $_SESSION["usuario"] = $datos["usuario"];
-                $_SESSION["permisos"] = $datos["permisos"];
-            }
-            else {
-                /*/
-                echo '<script>
-                        if ( window.history.replaceState ) {
-                            window.history.replaceState( null, null, window.locations.href );
-                        }
-                      </script>';
-                echo '<div class="alert" >Error el ingresar mail o contraseña</div>';
-                */
-            }
-
             return $respuesta;
         }
     }
-
 
     static public function crtActualizarRegistro() {
         if ( isset( $_POST[ "actualizarNombre" ] ) ) {
@@ -106,9 +89,9 @@ class controladorFormularios {
     }
 
     /* Obtener un Array de Registros */
-    static public function crtSeleccionarRegistros( $item, $valor ) {
+    static public function crtSeleccionarRegistros( $item, $valor, $todos = false ) {
         $tabla = "usuarios";
-        $respuesta = modeloFormularios::mdlSeleccionarRegistros( $tabla, $item, $valor );
+        $respuesta = modeloFormularios::mdlSeleccionarRegistros( $tabla, $item, $valor, $todos );
         return $respuesta;
     }
 
