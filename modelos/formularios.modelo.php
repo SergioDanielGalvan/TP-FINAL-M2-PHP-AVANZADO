@@ -93,10 +93,15 @@ class modeloFormularios {
         return "ok";
    }
 
-   static public function mdlSeleccionarRegistros( $tabla, $item, $valor ) {
+   static public function mdlSeleccionarRegistros( $tabla, $item, $valor, $todos = false ) {
         $strSQL = "";
         if ( $item == null && $valor == null ) {
-            $strSQL = "SELECT *, DATE_FORMAT( fechaalta, '%d-%m-%Y' ) AS fecha, DATE_FORMAT( fechaultimologin, '%d-%m-%Y' ) AS ultimoingreso FROM $tabla WHERE permisos = 'user' ORDER BY usuario DESC;";
+            if ( $todos ) {
+                $strSQL = "SELECT *, DATE_FORMAT( fechaalta, '%d-%m-%Y' ) AS fecha, DATE_FORMAT( fechaultimologin, '%d-%m-%Y' ) AS ultimoingreso FROM $tabla ORDER BY usuario DESC;";
+            }
+            else {
+                $strSQL = "SELECT *, DATE_FORMAT( fechaalta, '%d-%m-%Y' ) AS fecha, DATE_FORMAT( fechaultimologin, '%d-%m-%Y' ) AS ultimoingreso FROM $tabla WHERE permisos = 'user' ORDER BY usuario DESC;";
+            }
         }
         else {
             $strSQL = $strSQL = "SELECT *, DATE_FORMAT( fechaalta, '%d-%m-%Y' ) AS fechaalta, DATE_FORMAT( fechaultimologin, '%d*%m-%Y' ) AS ultimoingreso FROM $tabla WHERE $item = :$item AND permisos = 'user' ORDER BY usuario DESC;";;
