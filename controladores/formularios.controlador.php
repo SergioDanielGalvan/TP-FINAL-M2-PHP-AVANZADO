@@ -97,7 +97,8 @@ class controladorFormularios {
                 "usuario" => $_POST[ "actualizarNombre" ],
                 "correo" => $_POST[ "actualizarCorreo" ],
                 "clave" => $encriptarPassword
-            ); 
+            );
+
             $respuesta = modeloFormularios::mdlActualizarRegistro( $tabla, $datos );
             return $respuesta;
         }
@@ -112,8 +113,8 @@ class controladorFormularios {
     }
 
     static public function ctrEliminarRegistro() {
-        if ( isset( $_POST[ "usuario" ] ) ) {
-            $respuesta = modeloFormularios::mdlEliminarRegistro( "usuarios", $_POST[ "usuario" ] );
+        if ( isset( $_POST[ "eliminarRegistro" ] ) ) {
+            $respuesta = modeloFormularios::mdlEliminarRegistro( "usuarios", $_POST[ "eliminarRegistro" ] );
             return $respuesta;
         }
     }
