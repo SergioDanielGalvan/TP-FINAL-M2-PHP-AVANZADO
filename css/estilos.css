@@ -1,0 +1,394 @@
+* {
+    color:black;
+}
+
+:root {
+    --inputbackground: yellow;
+    --botoncolor: rgb(126, 123, 123);
+    --botonbackgroundcolor: white;
+}
+
+/* header */
+
+header {
+    background-color: rgb(31, 57, 248);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0px;
+    width: 99%;
+    background: -webkit-linear-gradient(top right, rgb(168, 176, 237), rgb(32, 57, 250));
+}
+
+header .imagenLogo {
+    width: 95px;
+    border-radius: 8px;
+    margin: 3px;
+    cursor: pointer;
+}
+
+/* menuprincipal */
+
+#listamenu > li {
+    position: relative;
+    display: inline-block;
+    height: 35px;
+    padding: 15px 10px 0px 10px;
+    margin-right: 5px;
+}
+
+#listamenu li > ul {
+    display: none;
+    position: absolute;
+    top: 50px;
+    left: 0px;
+    background-color: #9FC8D9;
+    box-shadow: 3px 3px 5px rgba(100, 100, 100, 0.7);
+    border-radius: 0px 0px 5px 5px;
+    list-style: none;
+    z-index: 10;
+}
+
+#listamenu li > ul > li {
+    width: 120px;
+    height: 35px;
+    padding-top: 15px;
+    padding-left: 10px;
+}
+
+#listamenu li:hover ul {
+    display: block;
+}
+
+#listamenu a {
+    color: #333333;
+    text-decoration: none;
+}
+
+#listamenu li:hover {
+    background-color: #6FACC6;
+}
+
+.fechaHoy {
+    color: rgb(31, 57, 248);
+    padding: 5px;
+    margin: 5px;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 8px;
+    border-color: blue;
+    width: 240px;
+    text-align: center;
+}
+
+/* General */ 
+.titulo {
+    display: flexbox;
+    justify-content: center;
+    text-align: center;
+    border-color: black;
+    border-style: solid;
+    border-width: 3px;
+    background-color: rgb(237, 240, 247);
+    border-radius: 20px / 10px;
+    align-content: center;
+    box-shadow: rgb(8, 8, 8) 5px 5px 20px;
+    width: 450px;
+    margin-left: calc((100% - 450px)/2); 
+    padding: 10px 0px;
+}
+
+/* Inicio Form Ingresar y Registro */
+
+#formIngresar {
+    display: inline-block;
+    margin: 5px;
+    padding: 5px 5px;
+    text-align: left;
+    border-color: black;
+    border-style: solid;
+    border-width: 3px;
+    background-color: rgb(55, 109, 246);
+    border-radius: 20px / 10px;
+    align-content: center;
+    box-shadow: rgb(8, 8, 8) 5px 5px 20px;
+    width: 440px;
+    margin-left: calc((100% - 450px)/2);
+}
+
+#formIngresar h3 {
+    text-align: center;
+    font: bold;
+}
+
+.labelIngresar {
+    display: inline-block;
+    color: black;
+    width: 200px;
+    padding-top: 5px;
+}
+
+.input_ingresar {
+    display: block;
+    color: black;
+    width: 95%;
+}
+
+.input_ingresar:focus {
+    background-color: var(--inputbackground);
+    border-width: 2px;
+    font: black;
+}
+
+.textareaIngresar {
+    display: block;
+    height: 5rem;
+    width: 95%;
+}
+ 
+.textareaIngresar:focus {
+    background-color: var(--inputbackground);
+    border-width: 2px;
+    font: black;
+}
+
+#botonesIngresar {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.botonIngresar {
+    margin: 10px 20px;
+    width: 100px;
+    color: var(--botoncolor);
+    background-color: var(--botonbackgroundcolor);
+    border-radius: 5px;
+}
+
+.botonIngresar:hover {
+    color: var(--botonbackgroundcolor);
+    background-color: var(--botoncolor);
+    cursor: pointer;
+    transition: all 1s ease-in;
+    border-color: white;
+}
+
+.mensajes {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+    width: 440px;
+    margin-left: calc((100% - 450px)/2);
+    font: bold;
+}
+
+.linkEditar {
+    width: 100px;
+    margin: 0px 20px;
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 5px;
+}
+
+.linkEditar a {
+    text-decoration: none;
+}
+
+/* Fin Form Ingresar */
+
+/* Tablas */
+
+.tabla {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 0 auto;
+    margin-right: auto;
+}
+  
+thead {
+    color: rgb(36, 36, 36);
+}
+  
+th, td {
+    text-align: center;
+    padding: 5px 0;
+}
+  
+tbody tr:hover {
+    background: #fff;
+    color: #565a5d;
+}
+
+/* Inicio Listado Comentarios */
+
+.listaComentarios {
+    width: 50%;
+    margin: 10px 10px;
+    padding: 10px 5px;
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 10px;
+    box-shadow: rgb(8, 8, 8) 5px 5px 20px;
+}
+
+.listaComentarios summary {
+    font: bold 16px Arial, sans-serif;
+    color: #333333;
+    text-align:left;
+    margin: 0% 2%;   
+}
+
+.listaComentarios h3 {
+    font: bold 14px Arial, sans-serif;
+    color: #333333;
+    text-align:left;
+    margin: 0% 2%;   
+}
+
+.listaComentarios p {
+    font: bold 12px Arial, sans-serif;
+    color: #333333;
+    text-align:justify;
+    margin: 0% 2%;   
+}
+
+/* Fin Listado Comentarios */
+
+/* Inicio Form ListadoProductos */
+
+#seccionLista {
+    display: flex;
+    justify-content:flex-start;
+    flex-wrap: wrap;
+    align-content:flex-start;
+    width: 99%;
+    margin: 20px 5px;
+}
+
+.ListadoProducto {
+    border: 2px;
+    color: black;
+    border-style: none;
+    border-radius: 60px 0px 60px 0px;
+    box-shadow: rgb(8, 8, 8) 5px 5px 20px;
+    width: 30%;
+    margin: 10px 20px;
+}
+
+.ListadoProducto h2 {
+    font: bold 18px Arial, sans-serif;
+    color: #333333;
+    text-align: center;
+    margin: 20px 0px 10px 0px;
+}
+
+.ListadoProducto h3 {
+    font: bold 14px Arial, sans-serif;
+    color: #333333;
+    text-align: center;
+    margin: 20px 0px 10px 0px;
+}
+
+.ListadoProducto p {
+    font: bold 12px Arial, sans-serif;
+    color: #333333;
+    text-align:justify;
+    margin: 0% 5%;
+}
+
+.ListadoProducto img {
+    width: 90%;
+    margin: 10px 0px 0px 15px;
+    -webkit-transition: all 0.7s ease; 
+    -moz-transition: all 1s ease;
+}
+
+#botones {
+    display: flex;
+    justify-content:left;
+}
+
+#botonEliminar {
+    border-style: none;
+    padding: 5px 10px;
+    height: 40px;
+}
+
+#botonActualizar {
+    border-style: none;
+    padding: 5px 10px;
+    height: 40px;
+}
+
+.ListadoProducto a {
+    color: black;
+    text-align: center;
+    width: 140px;
+    margin: 10% 37%;
+    padding: 5px 10px;
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 5px 5px;
+    box-shadow: rgb(8, 8, 8) 5px 5px 20px;
+}
+
+.ListadoProducto a:hover {
+    cursor: pointer;
+    color: white;
+    background-color: #333333;
+    transition: all 1s ease-in;
+}
+
+.ListadoProducto:hover {
+    border-style: solid;
+    box-shadow: black 5px 5px 20px;
+}
+
+.ListadoProducto img:hover {
+    -webkit-transform: rotate(-3deg); -moz-transform: rotate(-3deg);
+    -webkit-box-shadow: 0 3px 10px #666; -moz-box-shadow: 0 3px 10px #666;
+}
+  
+.ListadoProducto img:focus {
+    outline: none;
+    /*
+    -webkit-transform: rotate(-3deg) scale(2.5);
+    -moz-transform: rotate(-3deg) scale(2.5);
+    -webkit-box-shadow: 0 3px 10px #666; -moz-box-shadow: 0 3px 10px #666;
+    */
+    z-index: 9999;
+}
+
+.mensajeError {
+    color: black;
+    text-align: center;
+    width: 340px;
+    margin-left: calc( (100% - 340px)/2 );
+    margin-bottom: 10px;
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 5px 5px;
+    box-shadow: rgb(8, 8, 8) 5px 5px 20px;
+}
+
+/* footer.php */ 
+
+.piePagina {
+    border-width: 2px;
+    border-style: solid;
+    border-color: white;
+    border-top-color: black;
+    width: 99%;
+}
+
+.piePagina h4 {
+    font: bold 12px Courier;
+    color: black;
+    font-family: 'Courier New', Courier, monospace;
+    margin-left: 20px;
+}
