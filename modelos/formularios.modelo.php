@@ -169,15 +169,14 @@ class modeloFormularios {
             return false;
         }
         $cmdSP = $conexion->prepare( $strSQL );
-        $cmdSP->bindParam(":" . $usuario, $usuario, PDO::PARAM_STR);
-        $cmdSP->execute();
+        $cmdSP->bindParam(":usuario", $usuario, PDO::PARAM_STR);
+        $resultado = $cmdSP->execute();
         // Liberando recursos
         $cmdSP = null;
-        return true;
+        return $resultado;
     }
 
     static public function mdlActualizarRegistro( $tabla, $datos ) {
-    
         $conexion = conexionDBMS::conexionPDO(); 
         if ( $conexion == null ) {
             return "fail";
@@ -189,12 +188,9 @@ class modeloFormularios {
         if ( ! $resultado )  {
             return "fail";
         }
-        $count = $resultado->fetchColumn();
-        if ( $count > 1 ) {
-            return "duplicate";
-        }
 
-        $cmdSP = $conexion->prepare("UPDATE $tabla SET (correo = :correo, clave = :clave) WHERE usuario = :usuario;");
+        $sql = "UPDATE $tabla SET correo = :correo, clave = :clave WHERE usuario = :usuario;";
+        $cmdSP = $conexion->prepare( $sql );
 
         $cmdSP->bindParam( ":usuario",  $datos["usuario"], PDO::PARAM_STR);
         $cmdSP->bindParam( ":correo",  $datos["correo"], PDO::PARAM_STR);
