@@ -41,7 +41,7 @@ function conexionPDO() {
   return $conection;
 }
 
-$conexion =conexionPDO(); 
+$conexion = conexionPDO(); 
 if ( $conexion == null ) {
     return "fail";
 }

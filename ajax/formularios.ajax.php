@@ -1,4 +1,5 @@
 <?php
+
 header('Access-Control-Allow-Origin: *');
 header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
 header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE');
@@ -35,10 +36,9 @@ class AjaxFormularios{
 
 /* ---Objeto de AJAX que recibe la variable POST -----*/
 
-if ( isset($_POST["validarEmail"]) ) {
+if ( isset( $_POST["validarEmail"] ) ) {
 
 	$valEmail = new AjaxFormularios();
 	$valEmail -> validarEmail = $_POST["validarEmail"];
 	$valEmail -> ajaxValidarEmail();
-
 }
