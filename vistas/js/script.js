@@ -1,12 +1,11 @@
 function showHint( str ) {
+	const a = document.getElementById("txtSugerencia");
     if ( str.length == 0 ) {
       	// document.getElementById("txtSugerencia").innerHTML = "";
-		const a = document.getElementById("txtSugerencia");
 		a.innerHTML = "";
       	return;
     } 
 	else {
-		console.dir( str );
 		let xmlhttp;
 		if ( window.XMLHttpRequest ) {
 			xmlhttp = new XMLHttpRequest();
@@ -32,7 +31,74 @@ function showHint( str ) {
 
 function checkCorreo( correo ) {
 	const a = document.getElementById("correo");
-    if ( str.length == 0 ) {
+	const n = document.getElementById("ingresoRegistro");
+    if ( correo.length == 0 ) {
+		// document.getElementById("txtSugerencia").innerHTML = "";
+	  	a.innerHTML = "";
+		return;
+  	} 
+	else {
+	  	let xmlhttp;
+	  	if ( window.XMLHttpRequest ) {
+			xmlhttp = new XMLHttpRequest();
+	  	}
+	  	else {
+		  	xmlhttp = new ActiveXObject("Microsoft.XMLHTTP")
+	  	}
+		xmlhttp.dataType = "text";
+	  	xmlhttp.onreadystatechange = function( respuesta ) {
+		if ( this.readyState == 4 && this.status == 200 ) {
+			const a = parseInt( xmlhttp.responseText );
+			nodop = document.querySelector( "#areaMensajes" );
+			if ( a > 0 ) {
+				// console.log( typeof a );
+				if ( nodop == null ) {
+					nodop = document.createElement("div");
+					nodop.classList.add('mensajes');
+					nodop.setAttribute("id", "areaMensajes");
+					nodoh = document.createElement("h2");
+					nodoh.textContent = "eMail/Correo existente!";
+					nodop.appendChild( nodoh );
+					n.appendChild( nodop );
+				}
+				else {
+					if ( nodop.childElementCount == 0 ) {
+						nodoh = document.createElement("h2");
+						nodoh.textContent = "eMail/Correo existente!";
+						nodop.appendChild( nodoh );
+						n.appendChild( nodop );
+					}
+					else {
+						nodop.firstElementChild.innerHTML = "eMail/Correo existente!";
+					}
+				}
+				/*
+				echo( '<div class = "mensajes" >' );
+					echo( "<h2>eMail/Correo existente!</h2>");
+				echo( '</div>');
+				*/
+			}
+			else {
+				if ( nodop !== null ) {
+					if ( nodop.childElementCount !== 0 ) {
+						nodop.firstElementChild.innerHTML = "";
+					}
+				}
+			}
+		}
+	  	}
+
+		let datos = new FormData();
+		datos.append("validarEmail", correo);
+		xmlhttp.open( "POST", "ajax/getmail.php", true );
+		xmlhttp.send( datos );
+	}
+}
+
+function checkCorreo1( correo ) {
+	const a = document.getElementById("correo");
+	const n = document.getElementById("ingresoRegistro");
+    if ( correo.length == 0 ) {
 		// document.getElementById("txtSugerencia").innerHTML = "";
 	  a.innerHTML = "";
 		return;
@@ -45,9 +111,35 @@ function checkCorreo( correo ) {
 		else {
 			xmlhttp = new ActiveXObject("Microsoft.XMLHTTP")
 		}
-      	xmlhttp.onreadystatechange = function() {
+      	xmlhttp.onreadystatechange = function( respuesta ) {
         	if ( this.readyState == 4 && this.status == 200 ) {
-				a.innerHTML = this.responseText;
+				console.log( "respuesta ->" + respuesta + "<-" );
+				console.dir( ( respuesta.responseXML == null) ? "Si": "No" );
+				if ( respuesta ) {
+					nodop = document.querySelector( "#areaMensajes" );
+					if ( nodop == null ) {
+						nodop = document.createElement("div");
+						nodop.classList.add('mensajes');
+						nodop.setAttribute("id", "areaMensajes");
+						nodoh = document.createElement("h2");
+						nodoh.textContent = "eMail/Correo existente!";
+						nodop.appendChild( nodoh );
+						n.appendChild( nodop );
+					}
+					else {
+						if ( nodop.childElementCount = 0 ) {
+							nodoh = document.createElement("h2");
+							nodoh.textContent = "eMail/Correo existente!";
+							nodop.appendChild( nodoh );
+							n.appendChild( nodop );
+						}
+					}
+					/*
+					echo( '<div class = "mensajes" >' );
+						echo( "<h2>eMail/Correo existente!</h2>");
+					echo( '</div>');
+					*/
+				}
         	}
       	}
 		/*
@@ -61,12 +153,12 @@ function checkCorreo( correo ) {
     }
 } 
 
-$("#correo").change( function () {
+$("#correo1").change( function () {
 	$(".alerta").remove();
 
 	let email = $(this).val();
 	// Para chequear que el script funciona
-	console.log("email", email)
+	//console.log("email", email)
 
 	let datos = new FormData();
 	datos.append("validarEmail", email);
