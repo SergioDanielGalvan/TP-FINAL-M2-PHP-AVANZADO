@@ -10,11 +10,16 @@ class controladorFormularios {
     static public function ctrFormRegistro()  {
         if ( isset( $_POST[ "usuario" ] ) ) {
             if ( preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["usuario"]) &&
-                preg_match( '/^\\S+@\\S+\\.\\S+$/', $_POST["correo"]) &&
+                filter_var( $_POST["correo"], FILTER_VALIDATE_EMAIL ) &&
                 preg_match('/^[0-9a-zA-Z]+$/', $_POST["clave"]) ) {
 
                 // Esta mal
 				// preg_match('/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/', $_POST["registroEmail"]) &&
+                // Funcionan mejor
+                // preg_match( '/^\\S+@\\S+\\.\\S+$/', $_POST["correo"]) &&
+                // preg_match('/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/', $_POST["correo"])
+
+                // La forma correcta -> !filter_var( $_POST["correo"], FILTER_VALIDATE_EMAIL)
 
                 $nombretabla = "usuarios";
                 $encriptarPassword = crypt( $_POST["clave"], self::$llave);
@@ -29,7 +34,8 @@ class controladorFormularios {
 				if ( ! preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["usuario"]) ) {
 					$respuesta = "error1";
 				}
-				else if ( ! preg_match('/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/', $_POST["correo"]) ) {
+				//else if ( ! preg_match('/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/', $_POST["correo"]) ) {
+                else if ( ! filter_var( $_POST["correo"], FILTER_VALIDATE_EMAIL ) ) {
 					$respuesta = "error2";
 				}
 				else if ( ! preg_match('/^[0-9a-zA-Z]+$/', $_POST["clave"]) ) {
