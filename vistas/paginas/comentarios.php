@@ -1,7 +1,4 @@
-<?php
-    include("head.php");
-?>
-<body>
+
     <h1 class = "titulo" >Ingreso</h1>
     <main>
         <section class = "Ingresar">
@@ -41,5 +38,3 @@
             ?>
         </section>
     </main>
-</body>
-</html>

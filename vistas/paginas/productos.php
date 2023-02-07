@@ -1,7 +1,3 @@
-<?php
-    include("head.php");
-?>
-<body>
     <main>
         <h1 class="titulo" >Listado Productos</h1>
         <section id = "seccionLista" >
@@ -33,5 +29,3 @@
                 }
             ?>
     </main>
-</body>
-</html>

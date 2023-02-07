@@ -1,7 +1,3 @@
-<?php
-    include("head.php");
-?>
-<body>
     <main>
         <h1 class="titulo" >Ingresar</h1>
         <section>
@@ -31,7 +27,7 @@
                         echo( "<h2>Ingreso usuario Ok!</h2>");
                         echo '<script>
                             setTimeout(function(){
-                                window.location = "index.php?pagina=inicio";
+                                window.location = "index.php?ruta=inicio";
                             },3000);
                             if ( window.history.replaceState ) {
                                 window.history.replaceState( null, null, window.locations.href );
@@ -59,5 +55,3 @@
             ?>
         </section>
     </main>
-</body>
-</html>
